@@ -1,0 +1,92 @@
+
+<div class="body">
+    <div class="header">
+
+       <div>
+           <div class="info">
+
+           </div>
+
+           <div class="logo">
+               <h1>STAR<br>WARS</h1>
+           </div>
+       </div>
+
+       <div class="barra-navegacao">
+           <nav class="barra">
+               <ul>
+                   <li>
+                       <button (click)="selecionarSecao('personagens')" (mouseenter)="mostrarDropdown = true">PERSONAGENS</button>
+                       <div class="dropdown" *ngIf="mostrarDropdown" (mouseleave)="mostrarDropdown = false">
+                           <button (click)="filtrarPersonagens('todos')">Todos</button>
+                           <button (click)="filtrarPersonagens('male')">Masculinos</button>
+                           <button (click)="filtrarPersonagens('female')">Femininos</button>
+                           <button (click)="filtrarPersonagens('n/a')">Desconhecido</button>
+                       </div>
+                   </li>
+                   <li><button (click)="selecionarSecao('planetas')">PLANETAS</button></li>
+                   <li><button (click)="selecionarSecao('filmes')">FILMES</button></li>
+               </ul>
+           </nav>
+       </div>
+
+        
+   </div>
+
+    <main>
+        <!-- Seção de Personagens -->
+        <div class="personagens" *ngIf="secaoAtiva === 'personagens'">
+           
+            
+            <div class="container">
+                <div class="card" *ngFor="let personagem of personagensFiltrados.slice(0, 10)" (click)="selecionarPersonagem(personagem)">
+                    <p>{{ personagem.name }}</p>
+
+                </div>
+            </div>
+
+            <!-- Detalhes do Personagem -->
+            <div class="detalhes" *ngIf="personagemSelecionado">
+                <div class="detalhes-content">
+                    <h2>{{ personagemSelecionado.name }}</h2>
+                    <p><strong>Altura:</strong> {{ personagemSelecionado.height }} cm</p>
+                    <p><strong>Peso:</strong> {{ personagemSelecionado.mass }} kg</p>
+                    <p><strong>Ano de nascimento:</strong> {{ personagemSelecionado.birth_year }}</p>
+                    <p><strong>Gênero:</strong> {{ personagemSelecionado.gender }}</p>
+
+                    <h3>Filmes:</h3>
+                    <ul>
+                        <li *ngFor="let filme of filmesDoPersonagem">{{ filme }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seção de Planetas -->
+        <div *ngIf="secaoAtiva === 'planetas'">
+            <h2>Planetas</h2>
+            <div class="container">
+                <div class="card" *ngFor="let planeta of planetasOrdenados">
+                    <p><strong>Nome:</strong> {{ planeta.name }}</p>
+                    <p><strong>Residentes:</strong> {{ planeta.residents.length }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seção de Filmes -->
+        <div *ngIf="secaoAtiva === 'filmes'">
+            <h2>Filmes</h2>
+            <div>
+                <button (click)="ordenarFilmesPorLancamento()">Ordenar por Lançamento</button>
+                <button (click)="ordenarFilmesPorCronologia()">Ordenar por Cronologia</button>
+            </div>
+            <div class="container">
+                <div class="card" *ngFor="let filme of filmes">
+                    <p><strong>Título:</strong> {{ filme.title }}</p>
+                    <p><strong>Episódio:</strong> {{ filme.episode_id }}</p>
+                    <p><strong>Data de Lançamento:</strong> {{ filme.release_date }}</p>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
