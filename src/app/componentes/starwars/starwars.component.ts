@@ -4,16 +4,20 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Filme, Personagem, Planeta } from '../../models/interfaces';
 import { PERSONAGEM } from '../../models/const';
 import { CommonModule } from '@angular/common';
+import { NavBarComponent } from '../nav-bar/nav-bar.component';
+import { PersonagensComponent } from '../personagens/personagens.component';
+import { PlanetasComponent } from '../planetas/planetas.component';
+import { FilmesComponent } from '../filmes/filmes.component';
 
 @Component({
   selector: 'app-starwars',
-  imports: [HttpClientModule, CommonModule],
+  imports: [HttpClientModule, CommonModule, NavBarComponent, PersonagensComponent, PlanetasComponent, FilmesComponent],
   providers: [ApiService],
   templateUrl: './starwars.component.html',
   styleUrl: './starwars.component.scss'
 })
 export class StarwarsComponent {
-  secaoAtiva: string = 'personagens';
+  secaoAtiva: string = '';
   mostrarDropdown: boolean = false;
   personagens: Personagem[] = [];
   personagensFiltrados: Personagem[] = [];

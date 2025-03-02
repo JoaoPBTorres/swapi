@@ -1,0 +1,9 @@
+<div >
+    <h2>Planetas</h2>
+    <div class="container">
+        <div class="card" *ngFor="let planeta of planetasOrdenados">
+            <p><strong>Nome:</strong> {{ planeta.name }}</p>
+            <p><strong>Residentes:</strong> {{ planeta.residents.length }}</p>
+        </div>
+    </div>
+</div>
