@@ -1,27 +1,30 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { ApiService } from './../../servicos/api.service';
 import { Component, ElementRef, HostListener } from '@angular/core';
+import { ApiService } from '../../servicos/api.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Filme, Personagem, Planeta } from '../../models/interfaces';
+import { PERSONAGEM } from '../../models/const';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-personagens',
+  selector: 'app-starwars',
   imports: [HttpClientModule, CommonModule],
   providers: [ApiService],
-  templateUrl: './personagens.component.html',
-  styleUrl: './personagens.component.scss'
+  templateUrl: './starwars.component.html',
+  styleUrl: './starwars.component.scss'
 })
-export class PersonagensComponent {
+export class StarwarsComponent {
   secaoAtiva: string = 'personagens';
   mostrarDropdown: boolean = false;
-  personagens: any[] = [];
-  personagensFiltrados: any[] = [];
-  personagemSelecionado: any = null;
-  filmesDoPersonagem: string[] = [];
-  planetas: any[] = [];
-  planetasOrdenados: any[] = [];
-  filmes: any[] = [];
+  personagens: Personagem[] = [];
+  personagensFiltrados: Personagem[] = [];
+  personagemSelecionado: Personagem = PERSONAGEM;
+  abrirDetalhesPersonagem: boolean = false;
+  filmesDoPersonagem: Filme[] = [];
+  filmes: Filme[] = [];
+  planetas: Planeta[] = [];
+  planetasOrdenados: Planeta[] = [];
 
-  constructor(private apiservice: ApiService, private http: HttpClient, private elRef: ElementRef) {}
+  constructor(private apiservice: ApiService, private http: HttpClient, private elRef: ElementRef) { }
 
   ngOnInit() {
     this.carregarPersonagens();
@@ -32,7 +35,7 @@ export class PersonagensComponent {
   carregarPersonagens(): void {
     this.apiservice.getPersonagens().subscribe(data => {
       this.personagens = data.results;
-      this.personagensFiltrados = this.personagens; 
+      this.personagensFiltrados = this.personagens;
     });
   }
 
@@ -42,11 +45,14 @@ export class PersonagensComponent {
     } else {
       this.personagensFiltrados = this.personagens.filter(p => p.gender === genero);
     }
-    this.mostrarDropdown = false; 
+    this.mostrarDropdown = false;
   }
 
-  selecionarPersonagem(personagem: any): void {
+  selecionarPersonagem(personagem: Personagem): void {
+    this.abrirDetalhesPersonagem = true;
+
     this.personagemSelecionado = personagem;
+
     this.filmesDoPersonagem = [];
     personagem.films.forEach((url: string) => {
       this.http.get(url).subscribe((filme: any) => {
@@ -81,7 +87,8 @@ export class PersonagensComponent {
   }
 
   fecharDetalhes(): void {
-    this.personagemSelecionado = null;
+    this.abrirDetalhesPersonagem = false;
+    this.personagemSelecionado = PERSONAGEM;
   }
 
   @HostListener('document:click', ['$event'])
