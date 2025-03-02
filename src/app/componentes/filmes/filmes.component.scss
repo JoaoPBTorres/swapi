@@ -1,3 +1,26 @@
+.body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.body h2 {
+    color: #fade4b;
+}
+
+button {
+    margin-left: 0;
+    all: unset;
+    margin: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    color: #ffeb87;
+}
+
 .container {
     display: flex;
     flex-wrap: wrap;
@@ -5,7 +28,7 @@
 }
 
 .card {
-    background-color: #333;
+    background-color: #1d1e1f;
     margin: 10px;
     padding: 20px;
     border-radius: 5px;
@@ -15,7 +38,8 @@
 }
 
 .card:hover {
-    background-color: #444;
+    background-color: #414143;
+    border: 1px solid rgb(179, 179, 152);
 }
 
 .detalhes {

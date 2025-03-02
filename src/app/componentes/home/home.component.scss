@@ -1,3 +1,6 @@
+@import url('https://fonts.cdnfonts.com/css/star-wars');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 .body {
     margin: 0;
     padding: 0;
@@ -5,4 +8,38 @@
     background-size: cover;
     height: 100vh; 
     color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    gap: 5px;
+    font-family: "Roboto", sans-serif;
 }
+
+.body img {
+    width: 400px;
+    height: 250px;
+}
+
+.body h2 {
+    margin-bottom: 0;
+}
+
+.descricao {
+    font-size: 10px;
+}
+
+.body button {
+    all: unset;
+    cursor: pointer;
+    border: 1px solid #fade4b;
+    padding: 10px;
+    border-radius: 20px;
+    width: 250px;
+}
+
+.body button:hover {
+    background-color: #fade4b;
+}
+

@@ -1,7 +1,7 @@
-<!-- Seção de Personagens -->
-<div class="personagens" >
-    <p>personagens works!</p>
-           
+<div class="body" >
+    
+    <h2>"Você foi o escolhido! Foi dito que você iria destruir os Sith, não se juntar a eles! Você deveria ter trazido equilíbrio à Força, não deixá-la na escuridão."</h2>
+
     <div class="container">
         <div class="card" *ngFor="let personagem of personagensFiltrados.slice(0, 10)" (click)="onSelecionarPersonagem.emit(personagem)">
             <p>{{ personagem.name }}</p>
@@ -12,16 +12,20 @@
 
     <div class="detalhes" *ngIf="abrirDetalhesPersonagem">
         <div class="detalhes-content">
+
             <h2>{{ personagemSelecionado.name }}</h2>
             <p><strong>Altura:</strong> {{ personagemSelecionado.height }} cm</p>
             <p><strong>Peso:</strong> {{ personagemSelecionado.mass }} kg</p>
             <p><strong>Ano de nascimento:</strong> {{ personagemSelecionado.birth_year }}</p>
             <p><strong>Gênero:</strong> {{ personagemSelecionado.gender }}</p>
 
-            <h3>Filmes:</h3>
-            <ul>
-                <li *ngFor="let filme of filmesDoPersonagem">{{ filme }}</li>
-            </ul>
+            <div class="lista-filmes">
+                <p>Filmes que aparece:</p>
+                <ul>
+                    <li *ngFor="let filme of filmesDoPersonagem">{{ filme }}</li>
+                 </ul>
+            </div>
+            
         </div>
     </div>
 </div>
