@@ -1,0 +1,17 @@
+<div class="barra-navegacao">
+    <nav class="barra">
+        <ul>
+            <li>
+                <button (click)="onSelecionarSecao.emit('personagens')" (mouseenter)="mostrarDropdown = true">PERSONAGENS</button>
+                <div class="dropdown" *ngIf="mostrarDropdown" (mouseleave)="mostrarDropdown = false">
+                    <button (click)="onFiltrarPersonagem.emit('todos')">Todos</button>
+                    <button (click)="onFiltrarPersonagem.emit('male')">Masculinos</button>
+                    <button (click)="onFiltrarPersonagem.emit('female')">Femininos</button>
+                    <button (click)="onFiltrarPersonagem.emit('n/a')">Desconhecido</button>
+                </div>
+            </li>
+            <li><button (click)="onSelecionarSecao.emit('planetas')">PLANETAS</button></li>
+            <li><button (click)="onSelecionarSecao.emit('filmes')">FILMES</button></li>
+        </ul>
+    </nav>
+</div>
