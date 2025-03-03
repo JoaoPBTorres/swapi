@@ -41,18 +41,3 @@ button:hover {
     background-color: #414143;
     border: 1px solid rgb(179, 179, 152);
 }
-
-.detalhes {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #222;
-    padding: 20px;
-    border-radius: 5px;
-    z-index: 1000;
-}
-
-.detalhes-content {
-    text-align: center;
-}
