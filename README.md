@@ -1,59 +1,55 @@
-# Swapi
+# Projeto Star Wars API(SWAPI)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.0.
+## Descrição
 
-## Development server
+Aplicação construída utilizando Angular e consumo da 'Star Wars API (SWAPI)' para exibir informações sobre filmes, personagens, planetas e outros dados do universo Star Wars.
+O projeto segue o padrão de Smart e Dumb Components, separando a lógica de negócios e a apresentação para facilitar a manutenção e organização do código.
 
-To start a local development server, run:
+## Estrutura de componentes
+### Dumb Components (Burros)
+- São responsáveis apenas por exibir dados recebidos via @Input();
+- Disparam eventos utilizando @Output();
+- Não possuem lógica complexa.
+  
+### Smart Components (Inteligentes)
+- Buscam, processam e controlam os dados;
+- São responsáveis por controlar o estado da aplicação;
+- Passam dados para os Dumb Components.
 
-```bash
+Essa separação torna o código mais modular e fácil de manter.
+
+### Exemplo de comunicação:
+- Dumb Components: Apenas exibem a interface e disparam eventos;
+- Smart Components: Pegam dados, processam e repassam para os Dumb Components.
+
+## Funcionamento
+- Exibição de filmes, personagens e planetas da API de Star Wars;
+- Utilização de Services para fazer chamadas HTTP para a API;
+- Estrutura de componentes dumb e smarts para uma separação clara de responsabilidades.
+
+## Tecnologias Utilizadas
+- Angular: Framework utilizado para o desenvolvimento da aplicação;
+- SWAPI (Star Wars API): API utilizada para buscar dados sobre o universo Star Wars.
+
+## Como rodar o projeto
+
+1 - Clone o repositório:\
+git clone https://github.com/seu-usuario/swapi.git
+
+2 - Navegue até o diretório do projeto:\
+cd swapi
+
+3 - Instale as dependências:\
+npm install
+
+4 - Inicie o servidor de desenvolvimento:\
 ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+5 - Acesse a aplicação em:\
+http://localhost:4200
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Próximos passos
+- Adicionar imagens nos cards de filmes, personagens e planetas;
+- Melhorar o design e a usabilidade da interface;
+- Resolver bugs;
+- Adicionar novas funcionalidades.
